@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express = require("express");
+const session = require("express-session");
+const passport_1 = require("./passport");
+const app = express();
+app.use(express.urlencoded({ extended: true }));
+app.use(session({ secret: 'your_secret_key', resave: false, saveUninitialized: false }));
+app.use(passport_1.default.initialize());
+app.use(passport_1.default.session());
+exports.default = app;
